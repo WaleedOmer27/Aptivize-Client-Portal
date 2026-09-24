@@ -1,0 +1,30 @@
+import pg from 'pg';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const { Pool } = pg;
+
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false, // required for Neon
+  },
+});
+
+pool.on('connect', () => {
+  console.log('✅ Connected to Neon PostgreSQL');
+});
+
+pool.on('error', (err) => {
+  console.error('❌ PostgreSQL pool error:', err.message);
+});
+
+/**
+ * Execute a parameterized query against the pool.
+ * @param {string} text   - SQL query string
+ * @param {Array}  params - Query parameters
+ */
+export const query = (text, params) => pool.query(text, params);
+
+export default pool;

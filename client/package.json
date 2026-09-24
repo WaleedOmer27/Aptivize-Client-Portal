@@ -1,0 +1,36 @@
+{
+  "name": "aptivize-client",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node api.js && vite",
+    "build": "vite build",
+    "lint": "oxlint",
+    "format": "prettier --write \"src/**/*.{js,jsx,css}\"",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^1.19.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-icons": "^5.7.0",
+    "react-router-dom": "^7.11.0",
+    "react-toastify": "^11.1.0",
+    "recharts": "^3.10.1"
+  },
+  "auditNotes": {
+    "react-router-dom": "GHSA-qwww-vcr4-c8h2 is an RSC/SSR-mode only CSRF vulnerability. This project is a pure client-side SPA with no RSC mode \u2014 the attack vector does not exist here. npm audit loops between versions with no clean resolution. Safe to ignore."
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.4",
+    "eslint-config-prettier": "^10.1.8",
+    "oxlint": "^1.75.0",
+    "prettier": "^3.9.6",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.2.0"
+  }
+}
